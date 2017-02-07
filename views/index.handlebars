@@ -1,0 +1,176 @@
+<!-- SpacePort(folio) Group Project - UCF Web Coding Bootcamp -->
+
+<div id="index-banner" class="parallax-container shadow">
+  <div class="container">
+
+    <!--Nav bar-->
+    <nav>
+      <div class="nav-wrapper">
+      
+        <form class="left" id="navbar-search" onSubmit="return false;">
+          <div class="input-field">
+           <input id="search" type="search" required>
+            <label class="label-icon" for="search"><i class="material-icons search-icon white-text">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+        <ul class="hide-on-med-and-down">
+          <li><a href="/spaceportfolio#row-1" id="view-all">View All</a></li>
+          <li><a href="#" id="view-portfolio">View Portfolio</a></li>
+        </ul>
+
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#" id="portfolio-button">Login/Create Portfolio</a></li>
+          <li><a href="#" id="logout-button">Logout</a></li>
+        </ul>
+      <ul class="side-nav" id="mobile-demo">
+          <li><a href="#" id="portfolio-button">Login/Create Portfolio</a></li><br>
+          <li><a href="#" id="logout-button">Logout</a></li><br>
+          <li><a href="/spaceportfolio#row-1" id="view-all">View All</a></li><br>
+          <li><a href="#" id="view-portfolio">View Portfolio</a></li>
+        </ul>
+
+      </div>
+    </nav>
+
+  </div>
+
+<!-- Overlay Login Form -->
+
+  <div class="row" id="form-overlay">
+   <!-- <div class="parallax"><img src="/assets/img/bg40.png" alt="Hero BG IMG"></div> -->
+    <button class="btn waves-effect waves-light serif blue darken-4 center-align" id="form-close-btn"><a href="#">&times;</a></button>
+    <div class="col m3"></div>
+
+    <div class="col s12 m6">
+      <div class="row">
+        <h4 class="center-align top-margin white-text form-h4">Please login to create/view your Space Portfolio</h4><br><br>
+      </div>
+
+      <div class="row">
+        <form class="signup">
+          <div class="input-field col s12">
+            <label for="email-input" class="white-text sans">Email</label>
+            <input id="email-input" type="email" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label for="password-input" class="white-text sans">Password</label>
+            <input id="password-input" type="password" class="validate">          
+            <button class="btn waves-effect waves-light serif blue darken-3 signup" type="submit" name="action" id="form-submit-btn">Sign Up
+            <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+        <form class="login">
+            <button class="btn waves-effect waves-light serif blue darken-3 login" type="submit" name="action" id="form-submit-btn">Login
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Hero Image/Text -->
+
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center white-text hero-h1">SpacePort(folio)</h1>
+      <div class="row center">
+        <h5 class="header col s12 header center white-text hero-h2">Find &amp; Save Your Favorite Space Images</h5>
+      </div>
+      <div class="row center">
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="/assets/img/bg40.png" alt="Hero BG IMG"></div>
+
+</div>
+
+
+
+<div class="row" id="row-1">
+
+  {{#each photos}}
+  <div class="col s12 m6 l3">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        {{!--code to wrap each image in lightbox code--}}
+        <a href={{this.url}} data-lightbox="image-1"><img class="activator" src={{this.url}}></a>
+
+        {{!--<img class="activator" src={{this.url}}>--}}
+      </div>
+      <div class="card-content">
+       <h4> {{this.title}}</h4>
+        <span class="card-title activator grey-text text-darken-4">Click for more info<i class="material-icons right">more_vert</i></span>
+        <p>Add To Portfolio</p>
+        <p>
+
+          <!-- Switch -->
+          <div class="switch">
+            <label>
+            Off
+            <input type="checkbox" class="photoSlider" value={{this.id}}>
+            <span class="lever"></span>
+            On
+          </label>
+          </div>
+        </p>
+      </div>
+
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{this.title}}<i class="material-icons right">close</i></span>
+        <p>{{this.explanation}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
+
+
+<!--  Scripts-->
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+<script type="text/javascript" src="/js/signup.js"></script>
+<script type="text/javascript" src="/js/members.js"></script>
+<script type="text/javascript" src="/js/logout.js"></script>
+<script src="/js/indexhb.js" type="text/javascript"></script>
+{{!--Lightbox2 js file--}}
+<script src="/js/lightbox.js"></script>
+
+
+
+
+
+
+{{!--
+<script type="text/javascript">
+  $("#form-submit-btn").click(function () {
+    //data_array = $("#form").serialize();
+    // alert(data_array);
+    var email = $("#email").val();
+    var address = $("#input2").val();
+    console.log(email);
+    console.log(address);
+
+  });
+</script>--}}
+
+<script type="text/javascript">
+  (function ($) {
+    $(function () {
+
+      $('.button-collapse').sideNav();
+      $('.parallax').parallax();
+
+    }); // end of document ready
+  })(jQuery); // end of jQuery name space
+
+</script>
